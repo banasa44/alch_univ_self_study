@@ -12,6 +12,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@types/secp256k1": "^4.0.3",
     "ethereum-cryptography": "^2.0.0"
   }
 }
