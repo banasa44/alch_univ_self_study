@@ -1,21 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findColor = exports.COLORS = void 0;
-const crypto_1 = require("crypto");
-const ethers_1 = require("ethers");
-// the possible colors that the hash could represent
-exports.COLORS = ['red', 'green', 'blue', 'yellow', 'pink', 'orange'];
+exports.findColor = void 0;
+const crypto_js_1 = require("crypto-js");
 // given a hash, return the color that created the hash
-function findColor(hash, colors) {
-    const bytesArray = exports.COLORS.map(str => (0, ethers_1.toUtf8Bytes)(str));
-    const hashArray = bytesArray.map(bytes => (0, crypto_1.createHash)('sha256').update(bytes).digest('hex'));
-    console.log(hashArray);
-    const index = hashArray.indexOf(hash);
-    if (index !== -1) {
-        return exports.COLORS[index];
-    }
-    else {
-        return "Color not found";
-    }
+function findColor(hash, COLORS) {
+    const index = COLORS
+        .map(str => (0, crypto_js_1.SHA256)(crypto_js_1.enc.Utf8.parse(str)))
+        .findIndex(h => h.toString() === hash);
+    return index !== -1 ? COLORS[index] : null;
 }
 exports.findColor = findColor;

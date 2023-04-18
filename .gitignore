@@ -6,7 +6,6 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
-*.ts
 
 # Build output
 lib/
@@ -18,7 +17,7 @@ build/
 *.code-workspace
 *.sublime-project
 *.sublime-workspace
-*.idea/
+.idea/
 *.iml
 
 # Miscellaneous
