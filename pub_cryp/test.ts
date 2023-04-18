@@ -1,5 +1,5 @@
 import hashMessage from './pubKeyCryp';
 
 const message = 'Hello, world!';
-hashMessage(message);
+console.log(hashMessage(message));
 
