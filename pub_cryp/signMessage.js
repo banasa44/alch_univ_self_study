@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const secp256k1 = require("ethereum-cryptography/secp256k1").secp256k1;
+const secp256k1 = require("noble-secp256k1");
 const hashMessage_1 = __importDefault(require("./hashMessage"));
 function signMessage(msg, key) {
     return __awaiter(this, void 0, void 0, function* () {
         const signedMessage = (0, hashMessage_1.default)(msg);
-        return secp256k1.sign(signedMessage, key);
+        return secp256k1.sign(signedMessage, key, { recovered: true });
     });
 }
 exports.default = signMessage;

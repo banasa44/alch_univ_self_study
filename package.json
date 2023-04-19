@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@types/secp256k1": "^4.0.3",
-    "ethereum-cryptography": "^2.0.0"
+    "ethereum-cryptography": "^2.0.0",
+    "ethereumjs-util": "^7.1.5",
+    "noble-secp256k1": "^1.2.14",
+    "secp256k1": "^5.0.0"
   }
 }
