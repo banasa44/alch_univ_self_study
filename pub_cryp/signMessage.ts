@@ -1,12 +1,11 @@
-const secp256k1 = require("noble-secp256k1");
-import hashMessage from './hashMessage';
+import { secp256k1 } from "ethereum-cryptography/secp256k1";
+import hashMessage from "./hashMessage";
 
-async function signMessage(msg: string,key:string): Promise<{ r: string, s: string, v: number }> {
-  const signedMessage = hashMessage(msg);
-  return secp256k1.sign(signedMessage, key, { recovered: true });
-}
+async function signMessage(msgHash: string, privateKey: Uint8Array): Promise<{ r: bigint; s: bigint; recovery: number | undefined }> {
+  const msgHashed = hashMessage(msgHash);
+  const signature = secp256k1.sign(msgHashed, privateKey);
+  const sig: any = signature;
+  return { r: BigInt(`0x${sig.slice(0, 32).toString("hex")}`), s: BigInt(`0x${sig.slice(32).toString("hex")}`), recovery: signature.recovery };
+};
 
 export default signMessage;
-
-
-
