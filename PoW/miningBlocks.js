@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mempool = exports.blocks = exports.mine = exports.addTransaction = exports.MAX_TRANSACTIONS = exports.TARGET_DIFFICULTY = void 0;
 const crypto_js_1 = require("crypto-js");
-exports.TARGET_DIFFICULTY = BigInt(0x0fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+exports.TARGET_DIFFICULTY = BigInt(0x02ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
 exports.MAX_TRANSACTIONS = 10;
 const addTransaction = (transaction) => {
-    exports.mempool.push(transaction);
+    exports.mempool.push(JSON.stringify(transaction));
 };
 exports.addTransaction = addTransaction;
 const mine = () => {

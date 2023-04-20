@@ -1,10 +1,10 @@
 import { SHA256 } from 'crypto-js';
 
-export const TARGET_DIFFICULTY = BigInt(0x0fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+export const TARGET_DIFFICULTY = BigInt(0x02ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
 export const MAX_TRANSACTIONS = 10;
 
-export const addTransaction = (transaction: string): void => {
-    mempool.push(transaction)
+export const addTransaction = (transaction: { sender: string; recipient: string; amount: string; }): void => {
+    mempool.push(JSON.stringify(transaction))
 }
 
 export const mine = (): void => {
